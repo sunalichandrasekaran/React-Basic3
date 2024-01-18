@@ -1,23 +1,21 @@
-import logo from './logo.svg';
-import './App.css';
+import { useState } from "react";
+import Result from "./Result";
+
+const numb = Math.floor(Math.random() * 10 + 1);
 
 function App() {
+  const [numbers, setNumbers] = useState("");
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <p>Guess the number 1 to 10 , {numb}</p>
+      <input
+        id="number"
+        name="number"
+        onChange={(e) => {
+          setNumbers(e.target.value);
+        }}
+      />
+      <Result numb={numb} numbers={numbers} />
     </div>
   );
 }
